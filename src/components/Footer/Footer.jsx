@@ -15,7 +15,7 @@ export default function () {
 }
 
 const Footer = styled.footer`
-  box-shadow: 0 0 4px ${(props) => props.theme.colors.gray3};
+  box-shadow: 0 0 4px ${(props) => props.theme.colors.gray4};
   margin-top: auto;
 `;
 
