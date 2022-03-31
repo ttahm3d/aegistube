@@ -1,9 +1,7 @@
-import { MainContainer } from "../../styles/utils";
-
 export default function () {
   return (
-    <MainContainer>
+    <div className="main-container">
       <h1>Explore page</h1>
-    </MainContainer>
+    </div>
   );
 }
