@@ -1,7 +1,9 @@
 import { MainContainer } from "../../styles/utils";
 
 export default function () {
-  <div>
-    <MainContainer>Landing Page</MainContainer>
-  </div>;
+  return (
+    <MainContainer>
+      <h1>Homepage</h1>
+    </MainContainer>
+  );
 }

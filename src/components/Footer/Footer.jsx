@@ -1,22 +1,14 @@
-import styled from "styled-components";
-import { MainContainer } from "../../styles/utils";
+import styles from "./Footer.module.css";
 import AegisTube from "../../assets/AegisTube.svg";
 
 export default function () {
   return (
-    <Footer className="p-y-2">
-      <MainContainer>
-        <Logo>
+    <footer className={`p-y-2 ${styles.footer}`}>
+      <div className="main-container">
+        <div>
           <img src={AegisTube} alt="logo" />
-        </Logo>
-      </MainContainer>
-    </Footer>
+        </div>
+      </div>
+    </footer>
   );
 }
-
-const Footer = styled.footer`
-  box-shadow: 0 0 4px ${(props) => props.theme.colors.gray4};
-  margin-top: auto;
-`;
-
-const Logo = styled.div``;

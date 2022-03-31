@@ -1,21 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import { Footer, Header } from "./components";
+import { Footer, Header, Sidebar } from "./components";
 import Router from "./router/Router";
-import { GlobalStyle, darkTheme } from "./styles/theme";
-import { Page } from "./styles/utils";
 
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={darkTheme}>
-        <GlobalStyle />
-        <Page>
-          <Header />
-          <Router />
-          <Footer />
-        </Page>
-      </ThemeProvider>
+      <div className="page">
+        <Header />
+        <Router />
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
