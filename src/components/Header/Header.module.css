@@ -1,0 +1,28 @@
+.header {
+  box-shadow: 0 0 4px var(--gray4);
+  padding: 0.75rem 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login__button {
+  background-color: var(--orange4);
+  border: 1px solid var(--orange6);
+  color: var(--orange11);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.login__button:hover {
+  background-color: var(--orange5);
+}
+
+.login__button:active {
+  background-color: var(--orange6);
+}
