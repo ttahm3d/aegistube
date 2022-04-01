@@ -1,12 +1,34 @@
 .header {
   box-shadow: 0 0 4px var(--gray4);
-  padding: 0.75rem 0;
+
+  padding: 0.75rem 1rem;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.menu,
+.logo {
+  font-size: 1.5rem;
+}
+
+.menu {
+  display: none;
+}
+
+.menu__logo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.navitems {
+  margin-left: auto;
 }
 
 .login__button {
@@ -25,4 +47,10 @@
 
 .login__button:active {
   background-color: var(--orange6);
+}
+
+@media screen and (max-width: 64em) {
+  .menu {
+    display: block;
+  }
 }

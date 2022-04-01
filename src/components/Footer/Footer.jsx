@@ -3,8 +3,8 @@ import AegisTube from "../../assets/AegisTube.svg";
 
 export default function () {
   return (
-    <footer className={`p-y-2 ${styles.footer}`}>
-      <div className="main-container">
+    <footer className={`p-y-2 p-x-2 ${styles.footer}`}>
+      <div className="container">
         <div>
           <img src={AegisTube} alt="logo" />
         </div>
