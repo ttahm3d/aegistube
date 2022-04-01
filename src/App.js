@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Footer, Header, Sidebar } from "./components";
 import Router from "./router/Router";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -19,6 +20,7 @@ function App() {
           </div>
         </div>
         <Footer />
+        <ToastContainer theme="dark" />
       </div>
     </BrowserRouter>
   );
