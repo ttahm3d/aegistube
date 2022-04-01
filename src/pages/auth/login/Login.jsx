@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input } from "../../../components";
+import { Button, Input, Toast } from "../../../components";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 
@@ -23,7 +23,7 @@ export default function () {
     event.preventDefault();
     console.log(loginForm);
     // Call the dispatch here
-
+    Toast({ type: "warning", message: "Toasts are working" });
     setLoginForm({
       email: "",
       password: "",
