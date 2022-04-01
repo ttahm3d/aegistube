@@ -1,0 +1,32 @@
+.sidebar {
+  border-right: 1px solid var(--gray4);
+}
+
+.sidebar__items {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+  list-style: none;
+}
+
+.sidebar__item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 1rem;
+  transition: 0.3s ease-out all;
+}
+
+:global .active {
+  background-color: var(--gray3);
+  color: var(--gray11);
+  font-weight: 500;
+}
+
+.sidebar__item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
