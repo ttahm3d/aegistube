@@ -1,0 +1,57 @@
+.header {
+  box-shadow: 0 0 4px var(--gray4);
+  z-index: 9;
+  padding: 0.75rem 1rem;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu,
+.logo {
+  font-size: 1.5rem;
+}
+
+.menu {
+  display: none;
+}
+
+.menu__logo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navitems {
+  margin-left: auto;
+}
+
+.login__button {
+  background-color: var(--orange4);
+  border: 1px solid var(--orange6);
+  color: var(--orange11);
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.login__button:hover {
+  background-color: var(--orange5);
+}
+
+.login__button:active {
+  background-color: var(--orange6);
+}
+
+@media screen and (max-width: 64em) {
+  .menu {
+    display: block;
+  }
+}
