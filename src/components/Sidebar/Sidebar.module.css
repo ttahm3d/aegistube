@@ -17,7 +17,7 @@
   align-items: center;
   color: var(--gray11);
   padding: 1rem;
-  transition: 0.3s ease-out all;
+  transition: 0.3s linear background;
   cursor: pointer;
 }
 
@@ -46,11 +46,11 @@
     top: 70px;
     width: 10rem;
     left: -100%;
-    transition: 600ms all linear;
+    transition: 0.3s all linear;
   }
 
   .sidebar__shown {
     left: 0;
-    transition: 600ms all linear;
+    transition: 0.3s all linear;
   }
 }
