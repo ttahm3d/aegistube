@@ -6,8 +6,6 @@ import Router from "./router/Router";
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
 
-  console.log(window.innerWidth);
-
   const toggleSidebar = () => setShowSidebar((s) => !s);
 
   return (
@@ -16,7 +14,7 @@ function App() {
         <Header toggleSidebar={toggleSidebar} />
         <div className="container">
           <div className="main-container">
-            <Sidebar />
+            <Sidebar showSidebar={showSidebar} toggleSidebar={toggleSidebar} />
             <Router />
           </div>
         </div>

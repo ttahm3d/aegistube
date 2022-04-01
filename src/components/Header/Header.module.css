@@ -1,6 +1,6 @@
 .header {
   box-shadow: 0 0 4px var(--gray4);
-
+  z-index: 9;
   padding: 0.75rem 1rem;
 }
 

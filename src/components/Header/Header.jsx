@@ -2,14 +2,14 @@ import styles from "./Header.module.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import AegisTube from "../../assets/AegisTube.svg";
 
-export default function () {
+export default function ({ toggleSidebar }) {
   return (
     <header className={styles.header}>
       <div className="container">
         <nav className={styles.navbar}>
           <div className={styles.menu__logo}>
             <div className={styles.menu}>
-              <AiOutlineMenu />
+              <AiOutlineMenu onClick={toggleSidebar} />
             </div>
             <div className={styles.logo}>
               <img src={AegisTube} alt="logo" />
