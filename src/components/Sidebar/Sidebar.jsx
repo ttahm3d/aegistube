@@ -52,8 +52,8 @@ export default function ({ showSidebar, toggleSidebar }) {
     <aside
       className={
         showSidebar
-          ? `${styles.sidebar}`
-          : `${styles.sidebar} ${styles.sidebar__shown}`
+          ? `${styles.sidebar} ${styles.sidebar__shown}`
+          : `${styles.sidebar}`
       }>
       <div className={styles.sidebar__items__container}>
         <ul className={styles.sidebar__items}>
