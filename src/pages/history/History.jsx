@@ -1,6 +1,6 @@
 export default function () {
   return (
-    <div className="main-container">
+    <div>
       <h3>History page</h3>
     </div>
   );
