@@ -1,0 +1,36 @@
+.form__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.label {
+  text-transform: capitalize;
+}
+
+.input {
+  padding: 0.25rem;
+  font-size: 1rem;
+  background-color: var(--gray3);
+  border: 1px solid var(--gray7);
+  color: var(--gray12);
+}
+
+.input:focus {
+  background-color: var(--gray5);
+  border: 1px solid var(--gray8);
+}
+
+.input:disabled {
+  background-color: var(--gray5);
+  cursor: not-allowed;
+}
+
+.showBtn {
+  position: absolute;
+  top: 55%;
+  right: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
