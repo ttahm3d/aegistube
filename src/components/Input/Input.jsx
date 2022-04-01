@@ -1,18 +1,19 @@
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import styles from "./Input.module.css";
 
-export default function ({
-  label,
-  id,
-  type,
-  name,
-  required,
-  value,
-  disabled,
-  onChangeHandler,
-  toggleShowPassword,
-  showPassword,
-}) {
+export default function (props) {
+  const {
+    label,
+    id,
+    type,
+    name,
+    required,
+    value,
+    disabled,
+    onChangeHandler,
+    toggleShowPassword,
+    showPassword,
+  } = props;
   return (
     <div className={`${styles.form__item} p-y-0-5 `}>
       <label className={styles.label} htmlFor={id}>

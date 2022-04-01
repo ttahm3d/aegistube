@@ -11,6 +11,7 @@
 
 .input {
   padding: 0.25rem;
+  border-radius: 0.25rem;
   font-size: 1rem;
   background-color: var(--gray3);
   border: 1px solid var(--gray7);
@@ -19,7 +20,7 @@
 
 .input:focus {
   background-color: var(--gray5);
-  border: 1px solid var(--gray8);
+  outline: 1px solid var(--gray8);
 }
 
 .input:disabled {
@@ -29,8 +30,17 @@
 
 .showBtn {
   position: absolute;
-  top: 55%;
-  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  top: 47.5%;
+  right: 0px;
   font-size: 1.2rem;
   cursor: pointer;
+  background-color: var(--gray6);
+}
+
+.showBtn:hover {
+  background-color: var(--gray7);
 }
