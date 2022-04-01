@@ -57,6 +57,22 @@
   --blackA10: hsla(0, 0%, 0%, 0.478);
   --blackA11: hsla(0, 0%, 0%, 0.565);
   --blackA12: hsla(0, 0%, 0%, 0.91);
+
+  /* Toastify colors */
+  /* Had to use important as the styles were not working without it  */
+  --toastify-color-info: hsl(209, 100%, 60.6%) !important;
+  --toastify-color-success: hsl(131, 39%, 52.1%) !important;
+  --toastify-color-warning: hsl(24, 100%, 58.5%) !important;
+  --toastify-color-error: hsl(10, 78%, 54%) !important;
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
 }
 
 *,
@@ -97,6 +113,11 @@ h3,
 h4 {
   margin: 0;
   padding: 0.5rem;
+}
+
+.primary-link {
+  border-bottom: 2px solid var(--blue5);
+  color: var(--blue11);
 }
 
 .p-x-1 {
