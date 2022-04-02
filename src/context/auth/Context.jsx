@@ -3,6 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 import { useLocalStorage } from "../../hooks";
 import { authReducer } from "./Reducer";
 import { Toast } from "../../components";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -14,8 +15,9 @@ const AuthProvider = ({ children }) => {
     isLoggedIn: userToken,
     user: userData,
   });
+  const navigate = useNavigate();
 
-  const handleLogin = async (loginForm) => {
+  const handleLogin = async (loginForm, path) => {
     try {
       const response = await axios.post("/api/auth/login", loginForm);
       if (response.status === 200) {
@@ -27,6 +29,7 @@ const AuthProvider = ({ children }) => {
           payload: response?.data?.user,
         });
       }
+      navigate(path, { replace: true });
     } catch (e) {
       console.error(e);
       Toast({
@@ -52,7 +55,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const handleSignup = async (signupForm) => {
+  const handleSignup = async (signupForm, path) => {
     try {
       const { status, data } = await axios.post("/api/auth/signup", signupForm);
       if (status === 201) {
@@ -66,6 +69,7 @@ const AuthProvider = ({ children }) => {
           message: "Welcome!! You have successsfully signed up.",
           type: "success",
         });
+        navigate(path, { replace: true });
       }
     } catch (e) {
       console.error(e);
