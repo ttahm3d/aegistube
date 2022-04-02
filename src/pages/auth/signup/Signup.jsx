@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Button, Input } from "../../../components";
+import { useAuth } from "../../../context/auth";
 import styles from "./Signup.module.css";
 
 export default function () {
   const [signupForm, setSignupForm] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     contact: "",
     email: "",
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const { handleSignup } = useAuth();
+
+  const location = useLocation();
+  const path = location.state?.from?.pathname || "/";
 
   const toggleShowPassword = () => setShowPassword((s) => !s);
 
@@ -26,11 +33,10 @@ export default function () {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(signupForm);
-    // Call the dispatch here
-
+    handleSignup(signupForm, path);
     setSignupForm({
-      name: "",
+      firstName: "",
+      lastName: "",
       contact: "",
       email: "",
       password: "",
@@ -43,11 +49,20 @@ export default function () {
         <h3 className={styles.form__heading}>Signup</h3>
         <form onSubmit={handleSubmit}>
           <Input
-            label="name"
-            id="name"
+            label="first name"
+            id="firstName"
             type="text"
-            name="name"
-            value={signupForm.name}
+            name="firstName"
+            value={signupForm.firstName}
+            required={true}
+            onChangeHandler={(event) => handleChange(event)}
+          />
+          <Input
+            label="last name"
+            id="lastName"
+            type="text"
+            name="lastName"
+            value={signupForm.lastName}
             required={true}
             onChangeHandler={(event) => handleChange(event)}
           />

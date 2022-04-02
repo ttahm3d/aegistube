@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Button, Input, Toast } from "../../../components";
+import { Button, Input } from "../../../components";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
+import { useAuth } from "../../../context/auth";
 
 export default function () {
   const [loginForm, setLoginForm] = useState({
@@ -9,6 +11,10 @@ export default function () {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const { handleLogin } = useAuth();
+
+  const location = useLocation();
+  const path = location.state?.from?.pathname || "/";
 
   const toggleShowPassword = () => setShowPassword((s) => !s);
 
@@ -21,9 +27,23 @@ export default function () {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(loginForm);
-    // Call the dispatch here
-    Toast({ type: "warning", message: "Toasts are working" });
+    handleLogin(loginForm, path);
+    setLoginForm({
+      email: "",
+      password: "",
+    });
+  };
+
+  const guestLogin = (event) => {
+    event.preventDefault();
+    handleLogin(
+      {
+        email: "tahirahmed@gmail.com",
+        password: "aegistube",
+      },
+      path
+    );
+    console.log(location);
     setLoginForm({
       email: "",
       password: "",
@@ -57,6 +77,14 @@ export default function () {
           />
           <div className="m-y-2">
             <Button variant="primary" text="Login" fullWidth />
+          </div>
+          <div className="m-y-2">
+            <Button
+              variant="secondary"
+              text="Login as Guest"
+              onClick={guestLogin}
+              fullWidth
+            />
           </div>
         </form>
         Don't have an account ?{" "}
