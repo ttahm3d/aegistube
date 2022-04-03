@@ -11,9 +11,7 @@ export default function () {
             <img src={Banner} alt="Hero Banner" />
           </div>
           <div className={styles.hero__text__container}>
-            <div className={styles.hero__heading}>
-              <img src={Logo} alt="logo" />
-            </div>
+            <img src={Logo} alt="logo" width={300} />
             <div className={styles.hero__text}>
               Video library for DotA fnatics
             </div>

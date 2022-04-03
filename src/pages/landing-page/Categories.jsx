@@ -20,7 +20,7 @@ export default function () {
   return (
     <div className="p-x-2 p-y-2">
       <div className={styles.categories__heading}>Browse Categories</div>
-      <div className={`${styles.categories} p-y-2`}>
+      <div className={`${styles.categories} p-y-1`}>
         {categories.map(({ id, name, url, description }) => (
           <div key={id} className={styles.category__card}>
             <div>
