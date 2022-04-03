@@ -8,20 +8,30 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    name: "True Sight",
+    url: "https://res.cloudinary.com/dut75albw/image/upload/v1648961159/AegisTube/Categories/true-sight.webp",
     description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
+      "TRUE SIGHT is a documentary series that takes you behind the scenes of the journeys of professional Dota 2 teams.",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    name: "The International",
+    url: "https://res.cloudinary.com/dut75albw/image/upload/v1648961158/AegisTube/Categories/The-International.webp",
     description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
+      "The International is the most prestegious trournament in the DotA 2 Calender. 18 teams battle it out for the Aegis of Champions and millions of Dollars.",
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    name: "DotA 2 Major",
+    url: "https://res.cloudinary.com/dut75albw/image/upload/v1648961097/AegisTube/Categories/Major.webp",
     description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
+      "DotA 2 Major's are regional events that lead to The International",
+  },
+  {
+    _id: uuid(),
+    name: "Pro VODS",
+    url: "https://res.cloudinary.com/dut75albw/image/upload/v1648962545/AegisTube/Categories/Pro-GOD-Mode.webp",
+    description:
+      "Watch your favourite PROs enter GOD Mode and decimate the oppositions",
   },
 ];

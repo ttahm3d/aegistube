@@ -1,0 +1,30 @@
+.primary {
+  background-color: var(--blue4);
+  color: var(--blue11);
+  border: var(--blue11);
+}
+
+.primary:hover {
+  background-color: var(--blue5);
+}
+
+.primary:active {
+  background-color: var(--blue6);
+}
+
+.secondary {
+  background-color: var(--orange4);
+  color: var(--orange11);
+  border: 2px solid var(--orange11);
+}
+
+.button {
+  padding: 0.25rem 0.75rem;
+  border: 0;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  min-height: 34px;
+}
