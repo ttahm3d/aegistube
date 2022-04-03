@@ -1,0 +1,50 @@
+.hero__text__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.categories__heading {
+  font-size: 1.5rem;
+  color: var(--blue9);
+  border-bottom: 1px solid var(--orange9);
+  display: inline-block;
+  font-weight: 500;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.category__card {
+  background-color: var(--gray2);
+  display: flex;
+  flex-direction: column;
+}
+
+.category__card__image {
+  aspect-ratio: 4/3;
+}
+
+.category__text__container {
+  padding: 0 0.5rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.category__text__title {
+  font-size: 1.2rem;
+  font-weight: 450;
+  color: var(--gray12);
+  padding-bottom: 1rem;
+}
+
+.category__text__description {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--gray11);
+}
