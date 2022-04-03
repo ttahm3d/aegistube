@@ -1,0 +1,25 @@
+import Banner from "../../assets/VideoHero.svg";
+import Logo from "../../assets/AegisTube.svg";
+import styles from "./LandingPage.module.css";
+
+export default function () {
+  return (
+    <section className={styles.hero__container}>
+      <div className="content-container">
+        <div className={styles.hero}>
+          <div className={styles.hero__image__container}>
+            <img src={Banner} alt="Hero Banner" />
+          </div>
+          <div className={styles.hero__text__container}>
+            <div className={styles.hero__heading}>
+              <img src={Logo} alt="logo" />
+            </div>
+            <div className={styles.hero__text}>
+              Video library for DotA fnatics
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
