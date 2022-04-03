@@ -169,12 +169,11 @@ h4 {
 .main-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.5rem;
   min-height: 100vh;
 }
 
 .content-container {
-  width: calc(95% - 2rem);
+  width: 100%;
   margin-inline: auto;
 }
 
