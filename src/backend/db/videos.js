@@ -198,4 +198,46 @@ export const videos = [
     likes: 800249,
     category: "The International",
   },
+  {
+    _id: uuid(),
+    videoId: "Th3ayeM1HQM",
+    title: "Team Secret vs Mineski - TI 9",
+    description:
+      "Team Secret vs Mineski - BO3 series. Game 2. Secret are 1 - 0 up and Mineski are defending for thier chances in the Tournament",
+    channelTitle: "DotA Digest",
+    channelId: "UCTQKT5QqO3h7y32G8VzuySQ",
+    thumbnail:
+      "https://res.cloudinary.com/dut75albw/image/upload/v1649061350/AegisTube/Thumbnails/ti01.webp",
+    views: 9727930,
+    likes: 800249,
+    category: "Best Games",
+  },
+  {
+    _id: uuid(),
+    videoId: "Th3ayeM1HQM",
+    title: "Team Liquid vs LGD - TI 9 Lower Bracket Finals",
+    description:
+      "Arguably the best of game of Entire TI9. Team Liquid after dropping down in LB and completing their run through it finally meet the Chinese DOTA Gods PSG LGD for spot in Final VS OG",
+    channelTitle: "DotA Digest",
+    channelId: "UCTQKT5QqO3h7y32G8VzuySQ",
+    thumbnail:
+      "https://res.cloudinary.com/dut75albw/image/upload/v1649061350/AegisTube/Thumbnails/ti01.webp",
+    views: 9727930,
+    likes: 800249,
+    category: "Best Games",
+  },
+  {
+    _id: uuid(),
+    videoId: "ptJsnmrgRbU",
+    title: "Best of Miracle",
+    description:
+      "Known as M-God in the DotA community, catch the best plays of Miracle",
+    channelTitle: "DotA Digest",
+    channelId: "UCTQKT5QqO3h7y32G8VzuySQ",
+    thumbnail:
+      "https://res.cloudinary.com/dut75albw/image/upload/v1649061350/AegisTube/Thumbnails/ti01.webp",
+    views: 9727930,
+    likes: 800249,
+    category: "PRO POV Highlights",
+  },
 ];

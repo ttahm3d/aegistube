@@ -22,14 +22,13 @@ export const categories = [
   },
   {
     _id: uuid(),
-    name: "DotA 2 Major",
+    name: "Best Games",
     url: "https://res.cloudinary.com/dut75albw/image/upload/v1648961097/AegisTube/Categories/Major.webp",
-    description:
-      "DotA 2 Major's are regional events that lead to The International",
+    description: "Handpicked games across the events that are best amongst all",
   },
   {
     _id: uuid(),
-    name: "Pro VODS",
+    name: "PRO POV Highlights",
     url: "https://res.cloudinary.com/dut75albw/image/upload/v1648962545/AegisTube/Categories/Pro-GOD-Mode.webp",
     description:
       "Watch your favourite PROs enter GOD Mode and decimate the oppositions",
