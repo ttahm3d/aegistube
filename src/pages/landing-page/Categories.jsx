@@ -10,7 +10,6 @@ export default function () {
       try {
         const response = await axios.get("/api/categories");
         setCategories(response.data?.categories);
-        console.log(response);
       } catch (error) {
         console.error(error);
       }
