@@ -1,0 +1,26 @@
+.filters__container {
+  background-color: var(--gray3);
+  align-items: center;
+  font-size: 80%;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--gray7);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.filter__active {
+  background-color: var(--blue4);
+}
+
+.reset__button {
+  justify-self: flex-end;
+}
