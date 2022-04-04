@@ -1,0 +1,21 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  /* height: fit-content; */
+  background-color: var(--gray3);
+}
+
+.card__thumbnail {
+  aspect-ratio: 4/3;
+}
+
+.card__description {
+  padding: 0 0.5rem 0.5rem;
+  justify-self: flex-start;
+}
+
+.card:hover {
+  background-color: var(--gray4);
+  cursor: pointer;
+}
