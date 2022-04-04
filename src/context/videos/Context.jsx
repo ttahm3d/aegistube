@@ -13,7 +13,7 @@ const VideosContext = createContext();
 
 const VideosProvider = ({ children }) => {
   const [videoState, videoDispatch] = useReducer(videosReducer, {
-    category: "True Sight",
+    category: "All",
   });
 
   const [videos, setVideos] = useState([]);
