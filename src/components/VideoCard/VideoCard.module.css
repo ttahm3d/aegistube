@@ -1,8 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
-  /* height: fit-content; */
+  /* justify-content: flex-end; */
+  position: relative;
   background-color: var(--gray3);
 }
 
@@ -12,7 +12,6 @@
 
 .card__description {
   padding: 0 0.5rem 0.5rem;
-  justify-self: flex-start;
 }
 
 .card:hover {

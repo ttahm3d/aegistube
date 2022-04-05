@@ -1,7 +1,10 @@
 .header {
   box-shadow: 0 0 4px var(--gray4);
+  background-color: var(--gray1);
   z-index: 9;
   padding: 0.75rem 1rem;
+  position: sticky;
+  top: 0;
 }
 
 .navbar {

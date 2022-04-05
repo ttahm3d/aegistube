@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Footer, Header, Sidebar } from "./components";
+import { Footer, Header, ScrollToTop, Sidebar } from "./components";
 import Router from "./router/Router";
 import { ToastContainer } from "react-toastify";
 
@@ -9,6 +9,7 @@ function App() {
 
   return (
     <div className="page">
+      <ScrollToTop />
       <Header toggleSidebar={toggleSidebar} />
       <div className="container">
         <div className="main-container">

@@ -86,7 +86,9 @@ a {
   color: inherit;
 }
 
-img {
+img,
+iframe,
+video {
   max-width: 100%;
 }
 
@@ -112,7 +114,7 @@ h2,
 h3,
 h4 {
   margin: 0;
-  padding: 0.5rem 0;
+  padding-bottom: 0.75rem;
 }
 
 .primary-link {
