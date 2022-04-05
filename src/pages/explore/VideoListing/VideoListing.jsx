@@ -1,10 +1,10 @@
 import { useVideos } from "../../../context/videos";
 import Filters from "./Filters/Filters";
-import VideoCard from "./VideoCard/VideoCard";
+import { VideoCard } from "../../../components";
 import styles from "./VideoListing.module.css";
 
 export default function () {
-  const { videos, videoState } = useVideos();
+  const { videos } = useVideos();
 
   return (
     <div>
