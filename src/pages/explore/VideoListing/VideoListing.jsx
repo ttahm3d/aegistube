@@ -6,9 +6,6 @@ import styles from "./VideoListing.module.css";
 export default function () {
   const { videos, videoState } = useVideos();
 
-  console.log(videos);
-  console.log(videoState);
-
   return (
     <div>
       <Filters />
