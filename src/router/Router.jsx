@@ -18,15 +18,15 @@ export default function () {
   return (
     <Suspense fallback={<>Loading...</>}>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
         <Route path="/mockbee" element={<ApiResponse />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/explore" element={<Explore />} />
-        <Route path="/video/:id" element={<Video />} />
         <Route element={<RedirectAuth />}>
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/signup" element={<Signup />} />
         </Route>
         <Route element={<RequiresAuth />}>
+          <Route path="/video/:id" element={<Video />} />
           <Route path="/history" element={<History />} />
           <Route path="/playlist" element={<Playlist />} />
           <Route path="/watch-later" element={<WatchLater />} />
