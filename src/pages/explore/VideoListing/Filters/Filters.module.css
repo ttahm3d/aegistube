@@ -6,7 +6,7 @@
 
 .filters {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
@@ -19,6 +19,7 @@
 
 .filter__active {
   background-color: var(--blue4);
+  color: var(--blue9);
 }
 
 .reset__button {

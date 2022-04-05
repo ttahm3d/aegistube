@@ -1,5 +1,6 @@
 import { useVideos } from "../../../../context/videos";
 import { Button } from "../../../../components";
+import { GrPowerReset } from "react-icons/gr";
 import styles from "./Filters.module.css";
 
 export default function () {
@@ -44,11 +45,9 @@ export default function () {
           </>
         ))}
         <div className={styles.reset__button}>
-          <Button
-            variant="secondary"
-            text="Reset"
-            onClick={() => changeCategory("All")}
-          />
+          <Button variant="secondary" onClick={() => changeCategory("All")}>
+            Reset
+          </Button>
         </div>
       </div>
     </div>
