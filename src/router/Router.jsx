@@ -20,6 +20,7 @@ export default function () {
         <Route path="/" element={<LandingPage />} />
         <Route path="/mockbee" element={<ApiResponse />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/video" element={<Explore />} />
         <Route element={<RedirectAuth />}>
           <Route path="/auth/login" element={<Login />} />
           <Route path="/auth/signup" element={<Signup />} />

@@ -96,7 +96,9 @@ export default function () {
             onChangeHandler={(event) => handleChange(event)}
           />
           <div className="m-y-2">
-            <Button variant="primary" text="Signup" fullWidth />
+            <Button variant="primary" fullWidth>
+              Signup
+            </Button>
           </div>
         </form>
         Already have an account ?{" "}

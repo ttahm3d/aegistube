@@ -76,15 +76,14 @@ export default function () {
             onChangeHandler={(event) => handleChange(event)}
           />
           <div className="m-y-2">
-            <Button variant="primary" text="Login" fullWidth />
+            <Button variant="primary" fullWidth>
+              Login
+            </Button>
           </div>
           <div className="m-y-2">
-            <Button
-              variant="secondary"
-              text="Login as Guest"
-              onClick={guestLogin}
-              fullWidth
-            />
+            <Button variant="secondary" onClick={guestLogin} fullWidth>
+              Login as Guest
+            </Button>
           </div>
         </form>
         Don't have an account ?{" "}
