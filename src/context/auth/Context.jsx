@@ -12,7 +12,7 @@ const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useLocalStorage("video-lib-user");
 
   const [authState, authDispatch] = useReducer(authReducer, {
-    isLoggedIn: userToken,
+    isLoggedIn: userToken ? true : false,
     user: userData,
   });
   const navigate = useNavigate();
