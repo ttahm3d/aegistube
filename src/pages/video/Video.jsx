@@ -15,8 +15,14 @@ import Action from "./Action";
 
 export default function () {
   const { id } = useParams();
-  const { videos, addToLikedVideos, likedVideos, addToWatchlater, watchLater } =
-    useVideos();
+  const {
+    videos,
+    addToLikedVideos,
+    likedVideos,
+    addToWatchlater,
+    watchLater,
+    addToHistory,
+  } = useVideos();
 
   const video = getVideoData(id, videos);
   const relatedVideos = getRelatedVideos(video?.category, videos);
@@ -50,6 +56,7 @@ export default function () {
               url={`http://www.youtube.com/watch?v=${id}`}
               controls={true}
               className={styles.video}
+              onStart={() => addToHistory(video)}
               width="100%"
               height="100%"
             />
