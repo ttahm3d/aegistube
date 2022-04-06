@@ -8,6 +8,7 @@ import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import VideoCard from "./VideoCard/VideoCard";
 import Liked from "./Liked/Liked";
 import Empty from "./Empty/Empty";
+import WatchLater from "./WatchLater/WatchLater";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   ScrollToTop,
   VideoCard,
   Liked,
+  WatchLater,
 };
