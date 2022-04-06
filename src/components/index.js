@@ -6,9 +6,13 @@ import Button from "./Button/Button";
 import Toast from "./Toast/Toast";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import VideoCard from "./VideoCard/VideoCard";
+import Liked from "./Liked/Liked";
+import Empty from "./Empty/Empty";
+import WatchIcon from "./WatchIcon/WatchIcon";
 
 export {
   Header,
+  Empty,
   Footer,
   Sidebar,
   Input,
@@ -16,4 +20,6 @@ export {
   Toast,
   ScrollToTop,
   VideoCard,
+  Liked,
+  WatchIcon,
 };

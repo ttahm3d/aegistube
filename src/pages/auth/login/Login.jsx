@@ -43,7 +43,6 @@ export default function () {
       },
       path
     );
-    console.log(location);
     setLoginForm({
       email: "",
       password: "",

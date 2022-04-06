@@ -1,0 +1,50 @@
+.watchlater__container {
+  padding: 1rem 0;
+}
+
+.watchlater__info {
+  padding: 2rem;
+  border-radius: 0.25rem;
+  background-color: var(--blue3);
+  color: var(--blue9);
+}
+
+.watchlater__info__text {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.watchlater {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 2rem auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gray3);
+  position: relative;
+}
+
+.thumbnail {
+  aspect-ratio: 4/3;
+}
+
+.card__description {
+  padding: 0 0.5rem 0.5rem;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 450;
+}
+
+.watchlater__container {
+  font-size: 2rem;
+  align-self: center;
+  justify-self: flex-end;
+}

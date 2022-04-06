@@ -1,0 +1,22 @@
+.icon__circle {
+  border: 1px solid var(--blue7);
+  width: fit-content;
+  font-size: 1.2rem;
+  min-width: 2rem;
+  min-height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: var(--blue4);
+  z-index: 2;
+}
+
+.icon__circle:hover {
+  background-color: var(--blue5);
+}
+
+.icon__circle:active {
+  background-color: var(--blue6);
+}

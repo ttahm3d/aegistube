@@ -100,6 +100,21 @@
 
 @media screen and (max-width: 64em) {
   .menu {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray3);
+    border: none;
+    border-radius: 0.25rem;
+    color: var(--gray9);
+    padding: 0.5rem 0.25rem;
+  }
+
+  .menu:hover {
+    background-color: var(--gray4);
+  }
+
+  .menu:active {
+    background-color: var(--gray6);
   }
 }
