@@ -60,7 +60,7 @@ export default function () {
             ))}
           </div>
           <div className={styles.video__information}>
-            <h1 className={styles.video__title}>{video?.title}</h1>
+            <h2 className={styles.video__title}>{video?.title}</h2>
             <div className={styles.video__description}>
               {video?.description}
             </div>

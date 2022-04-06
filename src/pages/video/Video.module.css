@@ -20,18 +20,18 @@
 
 .action {
   padding: 0.5rem;
+  gap: 0.5rem;
   background-color: var(--gray3);
   cursor: pointer;
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: flex-start;
-  width: 5rem;
   border-radius: 0.25rem;
 }
 
 .action:hover {
   background-color: var(--blue4);
+  color: var(--blue11);
 }
 
 .action:active {
@@ -39,7 +39,10 @@
 }
 
 .action__icon {
-  font-size: 1.8rem;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .selected {
@@ -49,7 +52,6 @@
 
 .action__name {
   text-align: center;
-  font-size: 0.75rem;
 }
 
 .related__videos {
