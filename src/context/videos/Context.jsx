@@ -18,6 +18,7 @@ const VideosProvider = ({ children }) => {
   const [videoState, videoDispatch] = useReducer(videosReducer, {
     category: "All",
     likedVideos: [],
+    watchLater: [],
   });
   const [token] = useLocalStorage("video-lib-user-token");
   const [videos, setVideos] = useState([]);
@@ -86,6 +87,45 @@ const VideosProvider = ({ children }) => {
     }
   };
 
+  const addToWatchlater = async (video) => {
+    if (isLoggedIn) {
+      if (
+        videoState.watchLater.some((likedVideo) => likedVideo._id === video._id)
+      ) {
+        removeFromWatchlater(video);
+      } else {
+        try {
+          const response = await axios.post(
+            `/api/user/watchlater`,
+            { video },
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+          );
+          console.log(response);
+          if (response.status === 201) {
+            videoDispatch({
+              type: "ADD_TO_WATCHLATER",
+              payload: response?.data?.watchlater,
+            });
+            Toast({
+              type: "success",
+              message: `${video.title} has been added to WatchLater list`,
+            });
+          }
+        } catch (e) {
+          console.error(e);
+          Toast({
+            type: "error",
+            message: "Something went wrong. Try again.",
+          });
+        }
+      }
+    }
+  };
+
   const removeFromLikedVideos = async (video) => {
     try {
       const response = await axios.delete(`/api/user/likes/${video._id}`, {
@@ -111,13 +151,43 @@ const VideosProvider = ({ children }) => {
     }
   };
 
+  const removeFromWatchlater = async (video) => {
+    try {
+      const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      if (response.status === 200) {
+        videoDispatch({
+          type: "REMOVE_FROM_WATCHLATER",
+          payload: response?.data?.watchlater,
+        });
+        Toast({
+          type: "info",
+          message: `${video.title} has been removed from Watchlater list`,
+        });
+      }
+    } catch (e) {
+      Toast({
+        type: "error",
+        message: "Something went wrong. Try again.",
+      });
+    }
+  };
+
+  console.log(videoState);
+
   return (
     <VideosContext.Provider
       value={{
         videos: videosToShow,
         category: videoState.category,
         likedVideos: videoState.likedVideos,
+        watchLater: videoState.watchLater,
         addToLikedVideos,
+        addToWatchlater,
+        removeFromWatchlater,
         removeFromLikedVideos,
         changeCategory,
         videoState,

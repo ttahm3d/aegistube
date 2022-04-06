@@ -5,6 +5,9 @@ const videosReducer = (state, { type, payload }) => {
     case "ADD_TO_LIKED":
     case "REMOVE_FROM_LIKED":
       return { ...state, likedVideos: payload };
+    case "ADD_TO_WATCHLATER":
+    case "REMOVE_FROM_WATCHLATER":
+      return { ...state, watchLater: payload };
     default:
       return state;
   }

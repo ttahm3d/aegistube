@@ -7,4 +7,7 @@ const getRelatedVideos = (category, videos) =>
 const isVideoLiked = (video, likedVideos) =>
   likedVideos.some((likedVideo) => likedVideo._id === video._id);
 
-export { getRelatedVideos, getVideoData, isVideoLiked };
+const isVideoInWatchLater = (video, watchLater) =>
+  watchLater.some((wVideo) => wVideo._id === video._id);
+
+export { getRelatedVideos, getVideoData, isVideoLiked, isVideoInWatchLater };
