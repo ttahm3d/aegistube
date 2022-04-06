@@ -21,21 +21,21 @@
 .action {
   padding: 0.5rem;
   background-color: var(--gray3);
+  cursor: pointer;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
   width: 5rem;
   border-radius: 0.25rem;
-  border: 1px solid var(--gray7);
 }
 
 .action:hover {
-  background-color: var(--gray4);
+  background-color: var(--blue4);
 }
 
 .action:active {
-  background-color: var(--gray5);
+  background-color: var(--blue5);
 }
 
 .action__icon {

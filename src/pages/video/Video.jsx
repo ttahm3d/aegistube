@@ -4,17 +4,24 @@ import { AiOutlineLike } from "react-icons/ai";
 import { MdOutlineWatchLater, MdOutlinePlaylistAdd } from "react-icons/md";
 import { useParams } from "react-router-dom";
 import { useVideos } from "../../context/videos/Context";
-import { getVideoData, getRelatedVideos, isVideoLiked } from "./Utils";
+import {
+  getVideoData,
+  getRelatedVideos,
+  isVideoLiked,
+  isVideoInWatchLater,
+} from "./Utils";
 import { VideoCard } from "../../components";
 import Action from "./Action";
 
 export default function () {
   const { id } = useParams();
-  const { videos, addToLikedVideos, likedVideos } = useVideos();
+  const { videos, addToLikedVideos, likedVideos, addToWatchlater, watchLater } =
+    useVideos();
 
   const video = getVideoData(id, videos);
   const relatedVideos = getRelatedVideos(video?.category, videos);
   const isLiked = isVideoLiked(video, likedVideos);
+  const isInWatchlater = isVideoInWatchLater(video, watchLater);
 
   const actions = [
     {
@@ -24,7 +31,13 @@ export default function () {
       clickHandler: () => addToLikedVideos(video),
       isAlreadyExists: isLiked,
     },
-    { id: 2, icon: <MdOutlineWatchLater />, name: "Watch Later" },
+    {
+      id: 2,
+      icon: <MdOutlineWatchLater />,
+      name: "Watch Later",
+      clickHandler: () => addToWatchlater(video),
+      isAlreadyExists: isInWatchlater,
+    },
     { id: 3, icon: <MdOutlinePlaylistAdd />, name: "Add to Playlist" },
   ];
 
