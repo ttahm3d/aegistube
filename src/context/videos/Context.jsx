@@ -19,6 +19,7 @@ const VideosProvider = ({ children }) => {
     category: "All",
     likedVideos: [],
     watchLater: [],
+    history: [],
   });
   const [token] = useLocalStorage("video-lib-user-token");
   const [videos, setVideos] = useState([]);
@@ -176,6 +177,89 @@ const VideosProvider = ({ children }) => {
     }
   };
 
+  const addToHistory = async (video) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.post(
+          `/api/user/history`,
+          { video },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        console.log(response);
+        if (response.status === 201) {
+          videoDispatch({
+            type: "ADD_TO_HISTORY",
+            payload: response?.data?.history,
+          });
+          // Toast({
+          //   type: "success",
+          //   message: `${video.title} has been added to WatchLater list`,
+          // });
+        }
+      } catch (e) {
+        console.error(e);
+        // Toast({
+        //   type: "error",
+        //   message: "Something went wrong. Try again.",
+        // });
+      }
+    }
+  };
+
+  const removeFromHistory = async (video) => {
+    try {
+      const response = await axios.delete(`/api/user/history/${video._id}`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      if (response.status === 200) {
+        videoDispatch({
+          type: "REMOVE_FROM_HISTORY",
+          payload: response?.data?.history,
+        });
+        Toast({
+          type: "info",
+          message: `${video.title} has been removed from History`,
+        });
+      }
+    } catch (e) {
+      Toast({
+        type: "error",
+        message: "Something went wrong. Try again.",
+      });
+    }
+  };
+
+  const clearHistory = async () => {
+    try {
+      const response = await axios.delete(`/api/user/history/all`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      if (response.status === 200) {
+        videoDispatch({
+          type: "CLEAR_HISTORY",
+          payload: response?.data?.history,
+        });
+        Toast({
+          type: "info",
+          message: `Your watch history has been cleared`,
+        });
+      }
+    } catch (e) {
+      Toast({
+        type: "error",
+        message: "Something went wrong. Try again.",
+      });
+    }
+  };
+
   console.log(videoState);
 
   return (
@@ -185,6 +269,10 @@ const VideosProvider = ({ children }) => {
         category: videoState.category,
         likedVideos: videoState.likedVideos,
         watchLater: videoState.watchLater,
+        history: videoState.history,
+        addToHistory,
+        removeFromHistory,
+        clearHistory,
         addToLikedVideos,
         addToWatchlater,
         removeFromWatchlater,
