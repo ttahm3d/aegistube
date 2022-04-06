@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+.icon__container {
+  padding: 2rem;
+  color: var(--blue9);
+}
+
+.text__container {
+  text-align: center;
+  width: min(400px, 90vw);
+}
+
+.text {
+  font-size: 1.5rem;
+  color: var(--gray11);
+  margin-bottom: 2rem;
+}
