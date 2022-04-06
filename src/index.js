@@ -13,10 +13,10 @@ const root = ReactDOMClient.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
-    <VideosProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <VideosProvider>
         <App />
-      </AuthProvider>
-    </VideosProvider>
+      </VideosProvider>
+    </AuthProvider>
   </BrowserRouter>
 );
