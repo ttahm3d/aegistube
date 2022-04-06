@@ -4,15 +4,13 @@ import { FaUserCircle } from "react-icons/fa";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import AegisTube from "../../assets/AegisTube.svg";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 
 export default function ({ toggleSidebar }) {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
   const { isLoggedIn, user, handleLogout } = useAuth();
-
-  // const getUserName = () => authState?.user.firstName;
 
   const toggleShowDropdown = () => setShowDropdown((s) => !s);
 
@@ -24,11 +22,13 @@ export default function ({ toggleSidebar }) {
       <div className="container">
         <nav className={styles.navbar}>
           <div className={styles.menu__logo}>
-            <div className={styles.menu}>
-              <AiOutlineMenu onClick={toggleSidebar} />
-            </div>
+            <button className={styles.menu} onClick={toggleSidebar}>
+              <AiOutlineMenu />
+            </button>
             <div className={styles.logo}>
-              <img src={AegisTube} alt="logo" />
+              <Link to="/">
+                <img src={AegisTube} alt="logo" />
+              </Link>
             </div>
           </div>
           <div className={styles.navitems}>
