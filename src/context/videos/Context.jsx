@@ -195,17 +195,9 @@ const VideosProvider = ({ children }) => {
             type: "ADD_TO_HISTORY",
             payload: response?.data?.history,
           });
-          // Toast({
-          //   type: "success",
-          //   message: `${video.title} has been added to WatchLater list`,
-          // });
         }
       } catch (e) {
         console.error(e);
-        // Toast({
-        //   type: "error",
-        //   message: "Something went wrong. Try again.",
-        // });
       }
     }
   };
@@ -259,8 +251,6 @@ const VideosProvider = ({ children }) => {
       });
     }
   };
-
-  console.log(videoState);
 
   return (
     <VideosContext.Provider
