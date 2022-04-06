@@ -1,4 +1,5 @@
 import { MdOutlineWatchLater, MdWatchLater } from "react-icons/md";
+import styles from "./WatchIcon.module.css";
 
 export default function (props) {
   const { watchLater } = props;
