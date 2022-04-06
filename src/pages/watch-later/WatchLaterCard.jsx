@@ -16,7 +16,7 @@ export default function ({ watchLaterVideo }) {
       </div>
       <div className={styles.card__description}>
         <div className={styles.title}>{watchLaterVideo?.title}</div>
-        <div className={styles.like__container}>
+        <div className={styles.watchlater__container}>
           <WatchIcon
             watchLater={1}
             onClick={() => removeFromWatchlater(watchLaterVideo)}
