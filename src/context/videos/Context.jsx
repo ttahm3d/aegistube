@@ -5,7 +5,6 @@ import {
   useState,
   useEffect,
 } from "react";
-import { useLocalStorage } from "../../hooks";
 import axios from "axios";
 import { filterByCategory, getResultantVideos } from "./utils";
 import { videosReducer } from "./Reducer";
@@ -22,7 +21,6 @@ const VideosProvider = ({ children }) => {
     history: [],
     playlists: [],
   });
-  const [token] = useLocalStorage("video-lib-user-token");
   const [videos, setVideos] = useState([]);
 
   const { isLoggedIn } = useAuth();
@@ -397,8 +395,6 @@ const VideosProvider = ({ children }) => {
       });
     }
   };
-
-  console.log(videoState);
 
   return (
     <VideosContext.Provider
