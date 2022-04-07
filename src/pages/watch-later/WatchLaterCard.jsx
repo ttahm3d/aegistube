@@ -19,6 +19,7 @@ export default function ({ watchLaterVideo }) {
         <div className={styles.watchlater__container}>
           <WatchIcon
             watchLater={1}
+            title="Remove video from watch later"
             onClick={() => removeFromWatchlater(watchLaterVideo)}
           />
         </div>

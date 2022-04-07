@@ -36,7 +36,8 @@ export default function ({ playlist }) {
           </div>
           <div
             className={styles.icon}
-            onClick={(e) => handleClick(e, playlist)}>
+            onClick={(e) => handleClick(e, playlist)}
+            title="Delete Playlist">
             <AiOutlineDelete />
           </div>
         </div>
