@@ -10,7 +10,25 @@
 }
 
 .card__description {
-  padding: 0 0.5rem 0.5rem;
+  padding: 0 0.75rem 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 0.5rem;
+}
+
+.card__channel__icon__container {
+  align-self: center;
+  justify-self: center;
+}
+
+.card__channel__icon {
+  border-radius: 50%;
+}
+
+.card__video__publisher {
+  font-size: 0.85rem;
+  padding: 0.5rem 0;
+  color: var(--gray10);
 }
 
 .card:hover {
