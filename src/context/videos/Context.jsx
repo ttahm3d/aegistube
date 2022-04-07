@@ -64,7 +64,7 @@ const VideosProvider = ({ children }) => {
             { video },
             {
               headers: {
-                authorization: token,
+                authorization: localStorage.getItem("video-lib-user-token"),
               },
             }
           );
@@ -102,7 +102,7 @@ const VideosProvider = ({ children }) => {
             { video },
             {
               headers: {
-                authorization: token,
+                authorization: localStorage.getItem("video-lib-user-token"),
               },
             }
           );
@@ -132,7 +132,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/likes/${video._id}`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -157,7 +157,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -186,7 +186,7 @@ const VideosProvider = ({ children }) => {
           { video },
           {
             headers: {
-              authorization: token,
+              authorization: localStorage.getItem("video-lib-user-token"),
             },
           }
         );
@@ -207,7 +207,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/history/${video._id}`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -232,7 +232,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/history/all`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -259,7 +259,11 @@ const VideosProvider = ({ children }) => {
         const response = await axios.post(
           "/api/user/playlists",
           { playlist: playlistForm },
-          { headers: { authorization: token } }
+          {
+            headers: {
+              authorization: localStorage.getItem("video-lib-user-token"),
+            },
+          }
         );
         videoDispatch({
           type: "CREATE_PLAYLIST",
@@ -293,7 +297,11 @@ const VideosProvider = ({ children }) => {
           const response = await axios.post(
             `/api/user/playlists/${inputPlaylist._id}`,
             { video },
-            { headers: { authorization: token } }
+            {
+              headers: {
+                authorization: localStorage.getItem("video-lib-user-token"),
+              },
+            }
           );
           const { playlist } = response?.data;
           const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
@@ -327,7 +335,11 @@ const VideosProvider = ({ children }) => {
       try {
         const response = await axios.delete(
           `/api/user/playlists/${playlistId}/${video._id}`,
-          { headers: { authorization: token } }
+          {
+            headers: {
+              authorization: localStorage.getItem("video-lib-user-token"),
+            },
+          }
         );
         const { playlist } = response?.data;
         const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
@@ -360,7 +372,11 @@ const VideosProvider = ({ children }) => {
       try {
         const response = await axios.delete(
           `/api/user/playlists/${playlist._id}`,
-          { headers: { authorization: token } }
+          {
+            headers: {
+              authorization: localStorage.getItem("video-lib-user-token"),
+            },
+          }
         );
         videoDispatch({
           type: "DELETE_PLAYLIST",
