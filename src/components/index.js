@@ -9,8 +9,10 @@ import VideoCard from "./VideoCard/VideoCard";
 import Liked from "./Liked/Liked";
 import Empty from "./Empty/Empty";
 import WatchIcon from "./WatchIcon/WatchIcon";
+import Modal from "./Modal/Modal";
 
 export {
+  Modal,
   Header,
   Empty,
   Footer,
