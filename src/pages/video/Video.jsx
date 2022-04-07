@@ -10,8 +10,10 @@ import {
   isVideoLiked,
   isVideoInWatchLater,
 } from "./Utils";
-import { VideoCard } from "../../components";
+import { Modal, VideoCard } from "../../components";
 import Action from "./Action";
+import { useState } from "react";
+import PlaylistModal from "./PlaylistModal/PlaylistModal";
 
 export default function () {
   const { id } = useParams();
@@ -23,6 +25,9 @@ export default function () {
     watchLater,
     addToHistory,
   } = useVideos();
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal((t) => !t);
+  const closeModal = () => setShowModal(false);
 
   const video = getVideoData(id, videos);
   const relatedVideos = getRelatedVideos(video?.category, videos);
@@ -44,7 +49,12 @@ export default function () {
       clickHandler: () => addToWatchlater(video),
       isAlreadyExists: isInWatchlater,
     },
-    { id: 3, icon: <MdOutlinePlaylistAdd />, name: "Add to Playlist" },
+    {
+      id: 3,
+      icon: <MdOutlinePlaylistAdd />,
+      name: "Add to Playlist",
+      clickHandler: () => setShowModal(true),
+    },
   ];
 
   return (
@@ -82,6 +92,9 @@ export default function () {
           </div>
         </div>
       </div>
+      <Modal showModal={showModal} header="Playlist" closeModal={closeModal}>
+        <PlaylistModal video={video} />
+      </Modal>
     </div>
   );
 }
