@@ -11,6 +11,9 @@ const Login = lazy(() => import("../pages/auth/login/Login"));
 const Signup = lazy(() => import("../pages/auth/signup/Signup"));
 const History = lazy(() => import("../pages/history/History"));
 const Playlist = lazy(() => import("../pages/playlist/Playlist"));
+const IndividualPlaylist = lazy(() =>
+  import("../pages/playlist/IndividualPlaylist/IndividualPlaylist")
+);
 const WatchLater = lazy(() => import("../pages/watch-later/WatchLater"));
 const Liked = lazy(() => import("../pages/liked-videos/LikedVideos"));
 
@@ -26,9 +29,13 @@ export default function () {
           <Route path="/auth/signup" element={<Signup />} />
         </Route>
         <Route element={<RequiresAuth />}>
-          <Route path="/video/:id" element={<Video />} />
+          <Route path="/video/:videoId" element={<Video />} />
           <Route path="/history" element={<History />} />
           <Route path="/playlist" element={<Playlist />} />
+          <Route
+            path="/playlist/:playlistId"
+            element={<IndividualPlaylist />}
+          />
           <Route path="/watch-later" element={<WatchLater />} />
           <Route path="/liked-videos" element={<Liked />} />
         </Route>
