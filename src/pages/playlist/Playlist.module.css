@@ -20,3 +20,11 @@
 .playlist__videos__info {
   color: var(--gray11);
 }
+
+.playlist__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}

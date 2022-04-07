@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { MdOutlinePlaylistAdd } from "react-icons/md";
 import styles from "./Playlist.module.css";
 
 export default function ({ playlist }) {
@@ -6,7 +7,10 @@ export default function ({ playlist }) {
     <div className={styles.playlist__container}>
       <Link to={`/playlist/${playlist._id}`}>
         {playlist.videos.length === 0 ? (
-          <div className={styles.playlist__thumbnail}></div>
+          <div className={styles.playlist__empty}>
+            <MdOutlinePlaylistAdd fill={`var(--blue9)`} size={35} />
+            <>Add videos</>
+          </div>
         ) : (
           <div className={styles.playlist__thumbnail}>
             <img src={playlist?.videos?.[0].thumbnail} alt={playlist.title} />
