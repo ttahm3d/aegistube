@@ -76,10 +76,19 @@ export default function () {
               <Action key={action.id} action={action} />
             ))}
           </div>
-          <div className={styles.video__information}>
-            <h2 className={styles.video__title}>{video?.title}</h2>
-            <div className={styles.video__description}>
-              {video?.description}
+          <div className={styles.video__information__container}>
+            <div className={styles.video__icon__container}>
+              <img
+                src={video?.channelIcon}
+                alt={video?.channelTitle}
+                className={styles.video__icon}
+              />
+            </div>
+            <div className={styles.video__information}>
+              <h2 className={styles.video__title}>{video?.title}</h2>
+              <div className={styles.video__description}>
+                {video?.description}
+              </div>
             </div>
           </div>
         </div>
