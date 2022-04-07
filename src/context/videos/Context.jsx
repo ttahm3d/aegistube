@@ -281,37 +281,44 @@ const VideosProvider = ({ children }) => {
     }
   };
 
-  const addVideoToPlaylist = async (playlistId, video) => {
-    if (isLoggedIn) {
-      try {
-        const response = await axios.post(
-          `/api/user/playlists/${playlistId}`,
-          { video },
-          { headers: { authorization: token } }
-        );
-        const { playlist } = response?.data;
-        const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
-          iPlaylist._id === playlist._id
-            ? { ...iPlaylist, videos: playlist.videos }
-            : { ...iPlaylist }
-        );
-        videoDispatch({
-          type: "ADD_VIDEO_TO_PLAYLIST",
-          payload: updatedPlaylists,
-        });
-        Toast({
-          type: "success",
-          message: `${video.title} has been added to ${playlist.title} playlist.`,
-        });
-      } catch (e) {
-        console.error(e);
-        Toast({ type: "error", message: "Something went wrong" });
-      }
+  const addVideoToPlaylist = async (inputPlaylist, video) => {
+    const itALreadyExists = inputPlaylist?.videos.some(
+      (iVideo) => iVideo._id === video._id
+    );
+    if (itALreadyExists) {
+      removeVideoFromPlaylist(inputPlaylist._id, video);
     } else {
-      Toast({
-        type: "error",
-        message: "You need to login to perform this action",
-      });
+      if (isLoggedIn) {
+        try {
+          const response = await axios.post(
+            `/api/user/playlists/${inputPlaylist._id}`,
+            { video },
+            { headers: { authorization: token } }
+          );
+          const { playlist } = response?.data;
+          const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
+            iPlaylist._id === playlist._id
+              ? { ...iPlaylist, videos: playlist.videos }
+              : { ...iPlaylist }
+          );
+          videoDispatch({
+            type: "ADD_VIDEO_TO_PLAYLIST",
+            payload: updatedPlaylists,
+          });
+          Toast({
+            type: "success",
+            message: `${video.title} has been added to ${playlist.title} playlist.`,
+          });
+        } catch (e) {
+          console.error(e);
+          Toast({ type: "error", message: "Something went wrong" });
+        }
+      } else {
+        Toast({
+          type: "error",
+          message: "You need to login to perform this action",
+        });
+      }
     }
   };
 

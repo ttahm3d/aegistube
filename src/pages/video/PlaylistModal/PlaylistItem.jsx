@@ -12,7 +12,7 @@ export default function ({ videoInPlaylist, video, playlist }) {
     <div
       key={playlist._id}
       className={`${styles.playlist} ${videoInPlaylist && styles.in__playlist}`}
-      onClick={() => addVideoToPlaylist(playlist._id, video)}>
+      onClick={() => addVideoToPlaylist(playlist, video)}>
       <div className={styles.playlist__icon}>
         {videoInPlaylist ? (
           <MdOutlinePlaylistAddCheck />
