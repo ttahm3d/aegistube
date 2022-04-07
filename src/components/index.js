@@ -11,12 +11,14 @@ import Empty from "./Empty/Empty";
 import WatchIcon from "./WatchIcon/WatchIcon";
 import Modal from "./Modal/Modal";
 import AddPlaylistForm from "./AddPlaylistForm/AddPlaylistForm";
+import Loader from "./Loader/Loader";
 
 export {
   Modal,
   Header,
   Empty,
   Footer,
+  Loader,
   Sidebar,
   Input,
   Button,

@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { Loader } from "../components";
 import RequiresAuth from "./RequiresAuth";
 import RedirectAuth from "./RedirectAuth";
 
@@ -19,7 +20,7 @@ const Liked = lazy(() => import("../pages/liked-videos/LikedVideos"));
 
 export default function () {
   return (
-    <Suspense fallback={<>Loading...</>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/mockbee" element={<ApiResponse />} />
         <Route path="/" element={<LandingPage />} />
