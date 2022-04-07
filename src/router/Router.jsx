@@ -10,6 +10,7 @@ const Explore = lazy(() => import("../pages/explore/Explore"));
 const Video = lazy(() => import("../pages/video/Video"));
 const Login = lazy(() => import("../pages/auth/login/Login"));
 const Signup = lazy(() => import("../pages/auth/signup/Signup"));
+const NotFound = lazy(() => import("../pages/Error/NotFound"));
 const History = lazy(() => import("../pages/history/History"));
 const Playlist = lazy(() => import("../pages/playlist/Playlist"));
 const IndividualPlaylist = lazy(() =>
@@ -40,6 +41,7 @@ export default function () {
           <Route path="/watch-later" element={<WatchLater />} />
           <Route path="/liked-videos" element={<Liked />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );
