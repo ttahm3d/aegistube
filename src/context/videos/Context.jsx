@@ -265,6 +265,10 @@ const VideosProvider = ({ children }) => {
           type: "CREATE_PLAYLIST",
           payload: response?.data?.playlists,
         });
+        Toast({
+          type: "success",
+          message: `Playlist with name ${playlistForm.title} has been created `,
+        });
       } catch (e) {
         console.error(e);
         Toast({ type: "error", message: "Something went wrong" });
@@ -295,6 +299,10 @@ const VideosProvider = ({ children }) => {
           type: "ADD_VIDEO_TO_PLAYLIST",
           payload: updatedPlaylists,
         });
+        Toast({
+          type: "success",
+          message: `${video.title} has been added to ${playlist.title} playlist.`,
+        });
       } catch (e) {
         console.error(e);
         Toast({ type: "error", message: "Something went wrong" });
@@ -323,6 +331,10 @@ const VideosProvider = ({ children }) => {
         videoDispatch({
           type: "REMOVE_VIDEO_FROM_PLAYLIST",
           payload: updatedPlaylists,
+        });
+        Toast({
+          type: "success",
+          message: `${video.title} has been removed from ${playlist.title} playlist.`,
         });
       } catch (e) {
         console.error(e);
