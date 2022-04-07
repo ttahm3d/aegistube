@@ -38,6 +38,7 @@ export default function () {
     {
       id: 1,
       icon: <AiOutlineLike />,
+      title: "Like the video",
       name: "Like",
       clickHandler: () => addToLikedVideos(video),
       isAlreadyExists: isLiked,
@@ -45,6 +46,7 @@ export default function () {
     {
       id: 2,
       icon: <MdOutlineWatchLater />,
+      title: "Add Video to Watch Later list",
       name: "Watch Later",
       clickHandler: () => addToWatchlater(video),
       isAlreadyExists: isInWatchlater,
@@ -52,6 +54,7 @@ export default function () {
     {
       id: 3,
       icon: <MdOutlinePlaylistAdd />,
+      title: "Add Video to a playlist",
       name: "Add to Playlist",
       clickHandler: () => setShowModal(true),
     },
