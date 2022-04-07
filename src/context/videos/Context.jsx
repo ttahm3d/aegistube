@@ -348,8 +348,6 @@ const VideosProvider = ({ children }) => {
     }
   };
 
-  console.log(videoState);
-
   return (
     <VideosContext.Provider
       value={{
