@@ -24,7 +24,7 @@ export default function () {
         {playlist?.videos.map((video) => (
           <div className={styles.card}>
             <div className={styles.card__thumbnail}>
-              <Link to={`/video/${video._id}`}>
+              <Link to={`/video/${video.videoId}`}>
                 <img src={video?.thumbnail} alt={video?.title} />
               </Link>
             </div>

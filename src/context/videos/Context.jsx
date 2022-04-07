@@ -368,7 +368,7 @@ const VideosProvider = ({ children }) => {
         });
         Toast({
           type: "success",
-          message: `${playlist.title} has been deleted `,
+          message: `Playlist with name ${playlist.title} has been deleted `,
         });
       } catch (e) {
         console.error(e);
