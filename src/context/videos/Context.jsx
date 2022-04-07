@@ -310,7 +310,7 @@ const VideosProvider = ({ children }) => {
   const removeVideoFromPlaylist = async (playlistId, video) => {
     if (isLoggedIn) {
       try {
-        const response = await axios.post(
+        const response = await axios.delete(
           `/api/user/playlists/${playlistId}/${video._id}`,
           { headers: { authorization: token } }
         );
