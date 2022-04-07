@@ -1,6 +1,6 @@
 import { useVideos } from "../../../context/videos/Context";
 import { checkVideoInPlayList } from "../Utils";
-import AddPlaylistForm from "./AddPlaylistForm";
+import { AddPlaylistForm } from "../../../components";
 import styles from "./Playlist.module.css";
 import PlaylistItem from "./PlaylistItem";
 
