@@ -4,6 +4,28 @@ Video Library for DotA 2 Games and documentaries
 
 ---
 
+## Deployed site
+
+The project is deployed on Vercel on the below url
+
+[https://aegistube.vercel.app](https://aegistube.vercel.app)
+
+---
+
+## Features
+
+User can
+
+- Watch videos
+- Filter videos based on category
+- Like Videos
+- Add Videos to Playlist(s)
+- Login with Guest Credentials
+- User's watch history is maintained - which can be deleted
+- Add videos to Watch Later
+
+---
+
 ## Running locally
 
 If you are using `yarn` as your package manager run the `yarn` commands else use `npm` commands
@@ -47,14 +69,6 @@ After it is completed run
 ```
 npm start
 ```
-
----
-
-## Deployed site
-
-The project is deployed on Vercel on the below url
-
-[https://aegistube.vercel.app](https://aegistube.vercel.app)
 
 ---
 
