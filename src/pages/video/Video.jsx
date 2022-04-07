@@ -16,7 +16,7 @@ import { useState } from "react";
 import PlaylistModal from "./PlaylistModal/PlaylistModal";
 
 export default function () {
-  const { id } = useParams();
+  const { videoId } = useParams();
   const {
     videos,
     addToLikedVideos,
@@ -29,7 +29,7 @@ export default function () {
   const toggleModal = () => setShowModal((t) => !t);
   const closeModal = () => setShowModal(false);
 
-  const video = getVideoData(id, videos);
+  const video = getVideoData(videoId, videos);
   const relatedVideos = getRelatedVideos(video?.category, videos);
   const isLiked = isVideoLiked(video, likedVideos);
   const isInWatchlater = isVideoInWatchLater(video, watchLater);
@@ -63,7 +63,7 @@ export default function () {
         <div className={styles.video__details}>
           <div>
             <ReactPlayer
-              url={`http://www.youtube.com/watch?v=${id}`}
+              url={`http://www.youtube.com/watch?v=${videoId}`}
               controls={true}
               className={styles.video}
               onStart={() => addToHistory(video)}
