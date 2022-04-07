@@ -1,0 +1,22 @@
+.playlists__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2rem;
+}
+
+.playlist__container {
+  background-color: var(--gray3);
+}
+
+.playlist__description__container {
+  padding: 0 1rem 1rem;
+}
+
+.playlist__name {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+
+.playlist__videos__info {
+  color: var(--gray11);
+}
