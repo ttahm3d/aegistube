@@ -5,11 +5,11 @@ export default function ({ children, header, showModal, closeModal }) {
   return (
     <>
       {showModal && (
-        <div className={styles.modal} onClick={closeModal}>
-          <div className={styles.container} onClick={closeModal}>
+        <div className={styles.modal}>
+          <div className={styles.container}>
             <div className={styles.header}>
               <div>{header}</div>{" "}
-              <div className={styles.icon}>
+              <div className={styles.icon} onClick={closeModal}>
                 <AiOutlineClose />
               </div>
             </div>
