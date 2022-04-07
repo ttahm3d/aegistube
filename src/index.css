@@ -58,6 +58,36 @@
   --blackA11: hsla(0, 0%, 0%, 0.565);
   --blackA12: hsla(0, 0%, 0%, 0.91);
 
+  /* Green Colors */
+
+  --green1: hsl(146, 30%, 7.4%);
+  --green2: hsl(155, 44.2%, 8.4%);
+  --green3: hsl(155, 46.7%, 10.9%);
+  --green4: hsl(154, 48.4%, 12.9%);
+  --green5: hsl(154, 49.7%, 14.9%);
+  --green6: hsl(154, 50.9%, 17.6%);
+  --green7: hsl(153, 51.8%, 21.8%);
+  --green8: hsl(151, 51.7%, 28.4%);
+  --green9: hsl(151, 55%, 41.5%);
+  --green10: hsl(151, 49.3%, 46.5%);
+  --green11: hsl(151, 50%, 53.2%);
+  --green12: hsl(137, 72%, 94%);
+
+  /* Red colors */
+
+  --red1: hsl(353, 23%, 9.8%);
+  --red2: hsl(357, 34.4%, 12%);
+  --red3: hsl(356, 43.4%, 16.4%);
+  --red4: hsl(356, 47.6%, 19.2%);
+  --red5: hsl(356, 51.1%, 21.9%);
+  --red6: hsl(356, 55.2%, 25.9%);
+  --red7: hsl(357, 60.2%, 31.8%);
+  --red8: hsl(358, 65%, 40.4%);
+  --red9: hsl(358, 75%, 59%);
+  --red10: hsl(358, 85.3%, 64%);
+  --red11: hsl(358, 100%, 69.5%);
+  --red12: hsl(351, 89%, 96%);
+
   /* Toastify colors */
   /* Had to use important as the styles were not working without it  */
   --toastify-color-info: hsl(209, 100%, 60.6%) !important;
