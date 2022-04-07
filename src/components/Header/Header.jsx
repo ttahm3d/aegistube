@@ -45,7 +45,6 @@ export default function ({ toggleSidebar }) {
                 {!showDropdown ? <FiChevronDown /> : <FiChevronUp />}
                 {showDropdown ? (
                   <div className={styles.dropdown}>
-                    <div className={styles.dropdown__item}>Profile</div>
                     <div
                       className={styles.dropdown__item}
                       onClick={handleLogout}>
