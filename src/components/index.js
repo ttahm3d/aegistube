@@ -10,6 +10,7 @@ import Liked from "./Liked/Liked";
 import Empty from "./Empty/Empty";
 import WatchIcon from "./WatchIcon/WatchIcon";
 import Modal from "./Modal/Modal";
+import AddPlaylistForm from "./AddPlaylistForm/AddPlaylistForm";
 
 export {
   Modal,
@@ -23,5 +24,6 @@ export {
   ScrollToTop,
   VideoCard,
   Liked,
+  AddPlaylistForm,
   WatchIcon,
 };

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Input, Button } from "../../../components";
-import { useVideos } from "../../../context/videos/Context";
-import styles from "./Playlist.module.css";
+import { useVideos } from "../../context/videos";
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+import styles from "./AddPlaylistForm.module.css";
 
 export default function () {
   const [playlistForm, setPlaylistForm] = useState({

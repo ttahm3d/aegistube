@@ -4,17 +4,16 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: var(--black3);
-  /* inset: 0 auto; */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .container {
-  padding: 0.5rem;
+  padding: 2rem;
   width: min(30rem, 90vw);
-  height: 60vh;
+  max-height: 60vh;
   background-color: var(--gray2);
 }
 

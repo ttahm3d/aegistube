@@ -32,13 +32,3 @@
   color: var(--green10);
   border: 1px solid var(--green7);
 }
-
-.form__container {
-  margin-top: auto;
-}
-
-.form {
-  display: flex;
-  margin-top: auto;
-  flex-direction: column;
-}
