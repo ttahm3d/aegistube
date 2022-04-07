@@ -10,11 +10,13 @@ import {
   isVideoLiked,
   isVideoInWatchLater,
 } from "./Utils";
-import { VideoCard } from "../../components";
+import { Modal, VideoCard } from "../../components";
 import Action from "./Action";
+import { useState } from "react";
+import PlaylistModal from "./PlaylistModal/PlaylistModal";
 
 export default function () {
-  const { id } = useParams();
+  const { videoId } = useParams();
   const {
     videos,
     addToLikedVideos,
@@ -23,8 +25,11 @@ export default function () {
     watchLater,
     addToHistory,
   } = useVideos();
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal((t) => !t);
+  const closeModal = () => setShowModal(false);
 
-  const video = getVideoData(id, videos);
+  const video = getVideoData(videoId, videos);
   const relatedVideos = getRelatedVideos(video?.category, videos);
   const isLiked = isVideoLiked(video, likedVideos);
   const isInWatchlater = isVideoInWatchLater(video, watchLater);
@@ -33,6 +38,7 @@ export default function () {
     {
       id: 1,
       icon: <AiOutlineLike />,
+      title: "Like the video",
       name: "Like",
       clickHandler: () => addToLikedVideos(video),
       isAlreadyExists: isLiked,
@@ -40,11 +46,18 @@ export default function () {
     {
       id: 2,
       icon: <MdOutlineWatchLater />,
+      title: "Add Video to Watch Later list",
       name: "Watch Later",
       clickHandler: () => addToWatchlater(video),
       isAlreadyExists: isInWatchlater,
     },
-    { id: 3, icon: <MdOutlinePlaylistAdd />, name: "Add to Playlist" },
+    {
+      id: 3,
+      icon: <MdOutlinePlaylistAdd />,
+      title: "Add Video to a playlist",
+      name: "Add to Playlist",
+      clickHandler: () => setShowModal(true),
+    },
   ];
 
   return (
@@ -53,7 +66,7 @@ export default function () {
         <div className={styles.video__details}>
           <div>
             <ReactPlayer
-              url={`http://www.youtube.com/watch?v=${id}`}
+              url={`http://www.youtube.com/watch?v=${videoId}`}
               controls={true}
               className={styles.video}
               onStart={() => addToHistory(video)}
@@ -66,10 +79,19 @@ export default function () {
               <Action key={action.id} action={action} />
             ))}
           </div>
-          <div className={styles.video__information}>
-            <h2 className={styles.video__title}>{video?.title}</h2>
-            <div className={styles.video__description}>
-              {video?.description}
+          <div className={styles.video__information__container}>
+            <div className={styles.video__icon__container}>
+              <img
+                src={video?.channelIcon}
+                alt={video?.channelTitle}
+                className={styles.video__icon}
+              />
+            </div>
+            <div className={styles.video__information}>
+              <h2 className={styles.video__title}>{video?.title}</h2>
+              <div className={styles.video__description}>
+                {video?.description}
+              </div>
             </div>
           </div>
         </div>
@@ -82,6 +104,9 @@ export default function () {
           </div>
         </div>
       </div>
+      <Modal showModal={showModal} header="Playlist" closeModal={closeModal}>
+        <PlaylistModal video={video} />
+      </Modal>
     </div>
   );
 }

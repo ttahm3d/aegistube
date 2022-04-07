@@ -1,0 +1,9 @@
+.form__container {
+  margin-top: auto;
+}
+
+.form {
+  display: flex;
+  margin-top: auto;
+  flex-direction: column;
+}

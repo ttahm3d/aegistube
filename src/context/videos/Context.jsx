@@ -5,7 +5,6 @@ import {
   useState,
   useEffect,
 } from "react";
-import { useLocalStorage } from "../../hooks";
 import axios from "axios";
 import { filterByCategory, getResultantVideos } from "./utils";
 import { videosReducer } from "./Reducer";
@@ -20,8 +19,8 @@ const VideosProvider = ({ children }) => {
     likedVideos: [],
     watchLater: [],
     history: [],
+    playlists: [],
   });
-  const [token] = useLocalStorage("video-lib-user-token");
   const [videos, setVideos] = useState([]);
 
   const { isLoggedIn } = useAuth();
@@ -63,7 +62,7 @@ const VideosProvider = ({ children }) => {
             { video },
             {
               headers: {
-                authorization: token,
+                authorization: localStorage.getItem("video-lib-user-token"),
               },
             }
           );
@@ -101,7 +100,7 @@ const VideosProvider = ({ children }) => {
             { video },
             {
               headers: {
-                authorization: token,
+                authorization: localStorage.getItem("video-lib-user-token"),
               },
             }
           );
@@ -131,7 +130,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/likes/${video._id}`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -156,7 +155,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -185,7 +184,7 @@ const VideosProvider = ({ children }) => {
           { video },
           {
             headers: {
-              authorization: token,
+              authorization: localStorage.getItem("video-lib-user-token"),
             },
           }
         );
@@ -206,7 +205,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/history/${video._id}`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -231,7 +230,7 @@ const VideosProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/user/history/all`, {
         headers: {
-          authorization: token,
+          authorization: localStorage.getItem("video-lib-user-token"),
         },
       });
       if (response.status === 200) {
@@ -252,6 +251,151 @@ const VideosProvider = ({ children }) => {
     }
   };
 
+  const addNewPlaylist = async (playlistForm) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.post(
+          "/api/user/playlists",
+          { playlist: playlistForm },
+          {
+            headers: {
+              authorization: localStorage.getItem("video-lib-user-token"),
+            },
+          }
+        );
+        videoDispatch({
+          type: "CREATE_PLAYLIST",
+          payload: response?.data?.playlists,
+        });
+        Toast({
+          type: "success",
+          message: `Playlist with name ${playlistForm.title} has been created `,
+        });
+      } catch (e) {
+        console.error(e);
+        Toast({ type: "error", message: "Something went wrong" });
+      }
+    } else {
+      Toast({
+        type: "error",
+        message: "You need to login to perform this action",
+      });
+    }
+  };
+
+  const addVideoToPlaylist = async (inputPlaylist, video) => {
+    const itALreadyExists = inputPlaylist?.videos.some(
+      (iVideo) => iVideo._id === video._id
+    );
+    if (itALreadyExists) {
+      removeVideoFromPlaylist(inputPlaylist._id, video);
+    } else {
+      if (isLoggedIn) {
+        try {
+          const response = await axios.post(
+            `/api/user/playlists/${inputPlaylist._id}`,
+            { video },
+            {
+              headers: {
+                authorization: localStorage.getItem("video-lib-user-token"),
+              },
+            }
+          );
+          const { playlist } = response?.data;
+          const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
+            iPlaylist._id === playlist._id
+              ? { ...iPlaylist, videos: playlist.videos }
+              : { ...iPlaylist }
+          );
+          videoDispatch({
+            type: "ADD_VIDEO_TO_PLAYLIST",
+            payload: updatedPlaylists,
+          });
+          Toast({
+            type: "success",
+            message: `${video.title} has been added to ${playlist.title} playlist.`,
+          });
+        } catch (e) {
+          console.error(e);
+          Toast({ type: "error", message: "Something went wrong" });
+        }
+      } else {
+        Toast({
+          type: "error",
+          message: "You need to login to perform this action",
+        });
+      }
+    }
+  };
+
+  const removeVideoFromPlaylist = async (playlistId, video) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.delete(
+          `/api/user/playlists/${playlistId}/${video._id}`,
+          {
+            headers: {
+              authorization: localStorage.getItem("video-lib-user-token"),
+            },
+          }
+        );
+        const { playlist } = response?.data;
+        const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
+          iPlaylist._id === playlist._id
+            ? { ...iPlaylist, videos: playlist.videos }
+            : { ...iPlaylist }
+        );
+        videoDispatch({
+          type: "REMOVE_VIDEO_FROM_PLAYLIST",
+          payload: updatedPlaylists,
+        });
+        Toast({
+          type: "success",
+          message: `${video.title} has been removed from ${playlist.title} playlist.`,
+        });
+      } catch (e) {
+        console.error(e);
+        Toast({ type: "error", message: "Something went wrong" });
+      }
+    } else {
+      Toast({
+        type: "error",
+        message: "You need to login to perform this action",
+      });
+    }
+  };
+
+  const deletePlaylist = async (playlist) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.delete(
+          `/api/user/playlists/${playlist._id}`,
+          {
+            headers: {
+              authorization: localStorage.getItem("video-lib-user-token"),
+            },
+          }
+        );
+        videoDispatch({
+          type: "DELETE_PLAYLIST",
+          payload: response?.data?.playlists,
+        });
+        Toast({
+          type: "success",
+          message: `Playlist with name ${playlist.title} has been deleted `,
+        });
+      } catch (e) {
+        console.error(e);
+        Toast({ type: "error", message: "Something went wrong" });
+      }
+    } else {
+      Toast({
+        type: "error",
+        message: "You need to login to perform this action",
+      });
+    }
+  };
+
   return (
     <VideosContext.Provider
       value={{
@@ -260,13 +404,18 @@ const VideosProvider = ({ children }) => {
         likedVideos: videoState.likedVideos,
         watchLater: videoState.watchLater,
         history: videoState.history,
+        playlists: videoState.playlists,
         addToHistory,
         removeFromHistory,
         clearHistory,
         addToLikedVideos,
+        removeFromLikedVideos,
         addToWatchlater,
         removeFromWatchlater,
-        removeFromLikedVideos,
+        addNewPlaylist,
+        addVideoToPlaylist,
+        removeVideoFromPlaylist,
+        deletePlaylist,
         changeCategory,
         videoState,
         videoDispatch,

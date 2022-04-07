@@ -8,20 +8,31 @@
   aspect-ratio: 16/9;
 }
 
+.video__information__container {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  gap: 1rem;
+}
+
 .video__title {
   padding-top: 0;
 }
 
+.video__icon {
+  border-radius: 50%;
+}
+
 .actions__container {
   padding: 1rem 0;
-  display: flex;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 
 .action {
   padding: 0.5rem;
   gap: 0.5rem;
-  background-color: var(--gray3);
+  border: 1px solid var(--gray8);
   cursor: pointer;
   display: flex;
   align-items: center;

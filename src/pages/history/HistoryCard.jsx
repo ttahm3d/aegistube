@@ -15,7 +15,10 @@ export default function ({ video }) {
           <div className={styles.card__title}>{video?.title}</div>
           <div className={styles.card__description}>{video?.description}</div>
         </div>
-        <div className={styles.icon} onClick={() => removeFromHistory(video)}>
+        <div
+          className={styles.icon}
+          onClick={() => removeFromHistory(video)}
+          title="Remove video from watch history">
           <AiOutlineDelete />
         </div>
       </div>

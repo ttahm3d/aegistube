@@ -10,6 +10,7 @@ export default function (props) {
     required,
     value,
     disabled,
+    placeholder,
     onChangeHandler,
     toggleShowPassword,
     showPassword,
@@ -28,6 +29,7 @@ export default function (props) {
             name={name}
             value={value}
             required={required}
+            placeholder={placeholder}
             disabled={disabled}
             onChange={onChangeHandler}
           />
@@ -42,6 +44,7 @@ export default function (props) {
           id={id}
           name={name}
           value={value}
+          placeholder={placeholder}
           required={required}
           disabled={disabled}
           onChange={onChangeHandler}

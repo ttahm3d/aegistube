@@ -16,7 +16,7 @@ export default function ({ likedVideo }) {
       </div>
       <div className={styles.card__description}>
         <div className={styles.title}>{likedVideo.title}</div>
-        <div className={styles.like__container}>
+        <div className={styles.like__container} title="Dislike video">
           <Liked liked={1} onClick={() => removeFromLikedVideos(likedVideo)} />
         </div>
       </div>
