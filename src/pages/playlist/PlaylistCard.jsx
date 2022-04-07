@@ -1,8 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineDelete } from "react-icons/ai";
 import { MdOutlinePlaylistAdd } from "react-icons/md";
 import styles from "./Playlist.module.css";
+import { useVideos } from "../../context/videos";
 
 export default function ({ playlist }) {
+  const { deletePlaylist } = useVideos();
+  const navigate = useNavigate();
+
+  const handleClick = (event, playlist) => {
+    event.preventDefault();
+    deletePlaylist(playlist);
+    navigate("/playlist");
+  };
+
   return (
     <div className={styles.playlist__container}>
       <Link to={`/playlist/${playlist._id}`}>
@@ -17,9 +28,16 @@ export default function ({ playlist }) {
           </div>
         )}
         <div className={styles.playlist__description__container}>
-          <div className={styles.playlist__name}>{playlist.title}</div>
-          <div className={styles.playlist__videos__info}>
-            {playlist?.videos?.length} videos
+          <div>
+            <div className={styles.playlist__name}>{playlist.title}</div>
+            <div className={styles.playlist__videos__info}>
+              {playlist?.videos?.length} videos
+            </div>
+          </div>
+          <div
+            className={styles.icon}
+            onClick={(e) => handleClick(e, playlist)}>
+            <AiOutlineDelete />
           </div>
         </div>
       </Link>

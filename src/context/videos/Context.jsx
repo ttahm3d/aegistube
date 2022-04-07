@@ -348,6 +348,35 @@ const VideosProvider = ({ children }) => {
     }
   };
 
+  const deletePlaylist = async (playlist) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.delete(
+          `/api/user/playlists/${playlist._id}`,
+          { headers: { authorization: token } }
+        );
+        videoDispatch({
+          type: "DELETE_PLAYLIST",
+          payload: response?.data?.playlists,
+        });
+        Toast({
+          type: "success",
+          message: `${playlist.title} has been deleted `,
+        });
+      } catch (e) {
+        console.error(e);
+        Toast({ type: "error", message: "Something went wrong" });
+      }
+    } else {
+      Toast({
+        type: "error",
+        message: "You need to login to perform this action",
+      });
+    }
+  };
+
+  console.log(videoState);
+
   return (
     <VideosContext.Provider
       value={{
@@ -367,6 +396,7 @@ const VideosProvider = ({ children }) => {
         addNewPlaylist,
         addVideoToPlaylist,
         removeVideoFromPlaylist,
+        deletePlaylist,
         changeCategory,
         videoState,
         videoDispatch,

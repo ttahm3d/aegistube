@@ -10,11 +10,35 @@
 
 .playlist__description__container {
   padding: 0 1rem 1rem;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 0.5rem;
 }
 
 .playlist__name {
   text-transform: capitalize;
   font-size: 1.2rem;
+}
+
+.icon {
+  justify-self: flex-end;
+  color: var(--orange9);
+  background-color: var(--orange3);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  width: fit-content;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--orange7);
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: var(--orange10);
+  background-color: var(--orange4);
 }
 
 .playlist__videos__info {
