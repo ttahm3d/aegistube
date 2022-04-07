@@ -20,6 +20,7 @@ const VideosProvider = ({ children }) => {
     likedVideos: [],
     watchLater: [],
     history: [],
+    playlists: [],
   });
   const [token] = useLocalStorage("video-lib-user-token");
   const [videos, setVideos] = useState([]);
@@ -252,6 +253,91 @@ const VideosProvider = ({ children }) => {
     }
   };
 
+  const addNewPlaylist = async (playlistForm) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.post(
+          "/api/user/playlists",
+          { playlist: playlistForm },
+          { headers: { authorization: token } }
+        );
+        videoDispatch({
+          type: "CREATE_PLAYLIST",
+          payload: response?.data?.playlists,
+        });
+      } catch (e) {
+        console.error(e);
+        Toast({ type: "error", message: "Something went wrong" });
+      }
+    } else {
+      Toast({
+        type: "error",
+        message: "You need to login to perform this action",
+      });
+    }
+  };
+
+  const addVideoToPlaylist = async (playlistId, video) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.post(
+          `/api/user/playlists/${playlistId}`,
+          { video },
+          { headers: { authorization: token } }
+        );
+        const { playlist } = response?.data;
+        const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
+          iPlaylist._id === playlist._id
+            ? { ...iPlaylist, videos: playlist.videos }
+            : { ...iPlaylist }
+        );
+        videoDispatch({
+          type: "ADD_VIDEO_TO_PLAYLIST",
+          payload: updatedPlaylists,
+        });
+      } catch (e) {
+        console.error(e);
+        Toast({ type: "error", message: "Something went wrong" });
+      }
+    } else {
+      Toast({
+        type: "error",
+        message: "You need to login to perform this action",
+      });
+    }
+  };
+
+  const removeVideoFromPlaylist = async (playlistId, video) => {
+    if (isLoggedIn) {
+      try {
+        const response = await axios.post(
+          `/api/user/playlists/${playlistId}/${video._id}`,
+          { headers: { authorization: token } }
+        );
+        const { playlist } = response?.data;
+        const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
+          iPlaylist._id === playlist._id
+            ? { ...iPlaylist, videos: playlist.videos }
+            : { ...iPlaylist }
+        );
+        videoDispatch({
+          type: "REMOVE_VIDEO_FROM_PLAYLIST",
+          payload: updatedPlaylists,
+        });
+      } catch (e) {
+        console.error(e);
+        Toast({ type: "error", message: "Something went wrong" });
+      }
+    } else {
+      Toast({
+        type: "error",
+        message: "You need to login to perform this action",
+      });
+    }
+  };
+
+  console.log(videoState);
+
   return (
     <VideosContext.Provider
       value={{
@@ -260,13 +346,17 @@ const VideosProvider = ({ children }) => {
         likedVideos: videoState.likedVideos,
         watchLater: videoState.watchLater,
         history: videoState.history,
+        playlists: videoState.playlists,
         addToHistory,
         removeFromHistory,
         clearHistory,
         addToLikedVideos,
+        removeFromLikedVideos,
         addToWatchlater,
         removeFromWatchlater,
-        removeFromLikedVideos,
+        addNewPlaylist,
+        addVideoToPlaylist,
+        removeVideoFromPlaylist,
         changeCategory,
         videoState,
         videoDispatch,
