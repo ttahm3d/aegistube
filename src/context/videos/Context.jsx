@@ -6,10 +6,38 @@ import {
   useEffect,
 } from "react";
 import axios from "axios";
-import { filterByCategory, getResultantVideos } from "./utils";
+import { filterByCategory, getResultantVideos } from "./utils/helperFunctions";
 import { videosReducer } from "./Reducer";
 import Toast from "../../components/Toast/Toast";
 import { useAuth } from "../auth";
+import {
+  ADD_TO_HISTORY,
+  ADD_TO_LIKED,
+  ADD_TO_WATCHLATER,
+  ADD_VIDEO_TO_PLAYLIST,
+  CLEAR_HISTORY,
+  CREATE_PLAYLIST,
+  DELETE_PLAYLIST,
+  FILTER_BY_CATEGORY,
+  REMOVE_FROM_HISTORY,
+  REMOVE_FROM_LIKED,
+  REMOVE_FROM_WATCHLATER,
+  REMOVE_VIDEO_FROM_PLAYLIST,
+} from "./utils/constants";
+import {
+  addNewPlaylistHandler,
+  addToHistoryHandler,
+  addVideosToLikedVideosHandler,
+  addVideoToPlaylistHandler,
+  addVideosToWatchLaterHandler,
+  clearHistoryHandler,
+  deletePlaylistHandler,
+  getVideosHandler,
+  removeFromHistoryHandler,
+  removeFromLikedVideosHandler,
+  removeFromWatchlaterHandler,
+  removeVideoFromPlaylistHandler,
+} from "./utils/services";
 
 const VideosContext = createContext();
 
@@ -28,7 +56,7 @@ const VideosProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const response = await axios.get("/api/videos");
+        const response = await getVideosHandler();
         if (response.status === 200) {
           setVideos(response?.data?.videos);
         }
@@ -42,7 +70,7 @@ const VideosProvider = ({ children }) => {
 
   const changeCategory = (name) => {
     videoDispatch({
-      type: "FILTER_BY_CATEGORY",
+      type: FILTER_BY_CATEGORY,
       payload: name,
     });
   };
@@ -57,15 +85,7 @@ const VideosProvider = ({ children }) => {
         removeFromLikedVideos(video);
       } else {
         try {
-          const response = await axios.post(
-            `/api/user/likes`,
-            { video },
-            {
-              headers: {
-                authorization: localStorage.getItem("video-lib-user-token"),
-              },
-            }
-          );
+          const response = await addVideosToLikedVideosHandler(video);
           if (response.status === 201) {
             videoDispatch({
               type: "ADD_TO_LIKED",
@@ -95,16 +115,7 @@ const VideosProvider = ({ children }) => {
         removeFromWatchlater(video);
       } else {
         try {
-          const response = await axios.post(
-            `/api/user/watchlater`,
-            { video },
-            {
-              headers: {
-                authorization: localStorage.getItem("video-lib-user-token"),
-              },
-            }
-          );
-          console.log(response);
+          const response = await addVideosToWatchLaterHandler(video);
           if (response.status === 201) {
             videoDispatch({
               type: "ADD_TO_WATCHLATER",
@@ -128,11 +139,7 @@ const VideosProvider = ({ children }) => {
 
   const removeFromLikedVideos = async (video) => {
     try {
-      const response = await axios.delete(`/api/user/likes/${video._id}`, {
-        headers: {
-          authorization: localStorage.getItem("video-lib-user-token"),
-        },
-      });
+      const response = await removeFromLikedVideosHandler(video);
       if (response.status === 200) {
         videoDispatch({
           type: "REMOVE_FROM_LIKED",
@@ -153,11 +160,7 @@ const VideosProvider = ({ children }) => {
 
   const removeFromWatchlater = async (video) => {
     try {
-      const response = await axios.delete(`/api/user/watchlater/${video._id}`, {
-        headers: {
-          authorization: localStorage.getItem("video-lib-user-token"),
-        },
-      });
+      const response = await removeFromWatchlaterHandler(video);
       if (response.status === 200) {
         videoDispatch({
           type: "REMOVE_FROM_WATCHLATER",
@@ -179,16 +182,7 @@ const VideosProvider = ({ children }) => {
   const addToHistory = async (video) => {
     if (isLoggedIn) {
       try {
-        const response = await axios.post(
-          `/api/user/history`,
-          { video },
-          {
-            headers: {
-              authorization: localStorage.getItem("video-lib-user-token"),
-            },
-          }
-        );
-        console.log(response);
+        const response = await addToHistoryHandler(video);
         if (response.status === 201) {
           videoDispatch({
             type: "ADD_TO_HISTORY",
@@ -203,11 +197,7 @@ const VideosProvider = ({ children }) => {
 
   const removeFromHistory = async (video) => {
     try {
-      const response = await axios.delete(`/api/user/history/${video._id}`, {
-        headers: {
-          authorization: localStorage.getItem("video-lib-user-token"),
-        },
-      });
+      const response = await removeFromHistoryHandler(video);
       if (response.status === 200) {
         videoDispatch({
           type: "REMOVE_FROM_HISTORY",
@@ -228,11 +218,7 @@ const VideosProvider = ({ children }) => {
 
   const clearHistory = async () => {
     try {
-      const response = await axios.delete(`/api/user/history/all`, {
-        headers: {
-          authorization: localStorage.getItem("video-lib-user-token"),
-        },
-      });
+      const response = await clearHistoryHandler();
       if (response.status === 200) {
         videoDispatch({
           type: "CLEAR_HISTORY",
@@ -254,15 +240,7 @@ const VideosProvider = ({ children }) => {
   const addNewPlaylist = async (playlistForm) => {
     if (isLoggedIn) {
       try {
-        const response = await axios.post(
-          "/api/user/playlists",
-          { playlist: playlistForm },
-          {
-            headers: {
-              authorization: localStorage.getItem("video-lib-user-token"),
-            },
-          }
-        );
+        const response = await addNewPlaylistHandler(playlistForm);
         videoDispatch({
           type: "CREATE_PLAYLIST",
           payload: response?.data?.playlists,
@@ -292,14 +270,9 @@ const VideosProvider = ({ children }) => {
     } else {
       if (isLoggedIn) {
         try {
-          const response = await axios.post(
-            `/api/user/playlists/${inputPlaylist._id}`,
-            { video },
-            {
-              headers: {
-                authorization: localStorage.getItem("video-lib-user-token"),
-              },
-            }
+          const response = await addVideoToPlaylistHandler(
+            inputPlaylist?._id,
+            video
           );
           const { playlist } = response?.data;
           const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
@@ -331,13 +304,9 @@ const VideosProvider = ({ children }) => {
   const removeVideoFromPlaylist = async (playlistId, video) => {
     if (isLoggedIn) {
       try {
-        const response = await axios.delete(
-          `/api/user/playlists/${playlistId}/${video._id}`,
-          {
-            headers: {
-              authorization: localStorage.getItem("video-lib-user-token"),
-            },
-          }
+        const response = await removeVideoFromPlaylistHandler(
+          playlistId,
+          video
         );
         const { playlist } = response?.data;
         const updatedPlaylists = videoState.playlists.map((iPlaylist) =>
@@ -368,14 +337,7 @@ const VideosProvider = ({ children }) => {
   const deletePlaylist = async (playlist) => {
     if (isLoggedIn) {
       try {
-        const response = await axios.delete(
-          `/api/user/playlists/${playlist._id}`,
-          {
-            headers: {
-              authorization: localStorage.getItem("video-lib-user-token"),
-            },
-          }
-        );
+        const response = await deletePlaylistHandler(playlist?._id);
         videoDispatch({
           type: "DELETE_PLAYLIST",
           payload: response?.data?.playlists,
