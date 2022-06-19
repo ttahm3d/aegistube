@@ -1,12 +1,5 @@
-import { Slide, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-hot-toast";
 
 export default function ({ message, type }) {
-  return toast(message, {
-    position: toast.POSITION.TOP_RIGHT,
-    autoClose: 1000,
-    type: type,
-    transition: Slide,
-    closeOnClick: true,
-  });
+  return toast[type](message);
 }

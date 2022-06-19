@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Footer, Header, ScrollToTop, Sidebar } from "./components";
 import Router from "./router/Router";
-import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -18,7 +18,7 @@ function App() {
         </div>
       </div>
       <Footer />
-      <ToastContainer theme="dark" />
+      <Toaster />
     </div>
   );
 }
