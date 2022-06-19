@@ -1,13 +1,15 @@
+import { LOGIN, LOGOUT, SIGNUP } from "./utils/constants";
+
 const authReducer = (state, { type, payload }) => {
   switch (type) {
-    case "LOGIN":
-    case "SIGNUP":
+    case LOGIN:
+    case SIGNUP:
       return {
         ...state,
         isLoggedIn: localStorage.getItem("video-lib-user-token") ? true : false,
         user: localStorage.getItem("video-lib-user"),
       };
-    case "LOGOUT":
+    case LOGOUT:
       return {
         ...state,
         isLoggedIn: false,
